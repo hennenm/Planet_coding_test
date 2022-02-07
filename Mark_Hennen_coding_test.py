@@ -11,7 +11,7 @@ Created on Wed Feb  2 12:00:11 2022
 # dimensions and geolocation, returning a python dictionary of training (80%) and testing (20%)
 # grid cells of specified size (64 * 64 pixels to match ML patch). This function addresses each  
 # of the requirements of the challenge, described throughout the code. 
-# Cell size can be changed on line <65>. 
+# Cell size can be changed on line <66>. 
 # --------------------------------------------------------------------------------------------
 # Results are produced as arrays, but can be converted back into .tif images with original 
 # spatial reference system using the function ArrayToImage. This is optional. 
@@ -19,7 +19,7 @@ Created on Wed Feb  2 12:00:11 2022
 # For demonstration, there is a small script after the functions. Here, you can define your 
 # working directory and run the TrainSample function and upload the results.
 # You can optionally converted the resulting training and testing arrays into .tif images  
-# using the ArrayToImage function on lines <239-241>.
+# using the ArrayToImage function on lines <241-243>.
 # ============================================================================================
 
 # Import required Python libraries
@@ -50,6 +50,7 @@ def TrainSample (image, labels):
     # ======================================================
     # Retrieve geotransformation info of input image
     gt = img.GetGeoTransform()
+    res = gt[1]
     # Retrieve spatail reference system
     prj=img.GetProjection()
     srs=osr.SpatialReference(wkt=prj)
@@ -62,7 +63,8 @@ def TrainSample (image, labels):
     xlen = img.RasterXSize
     ylen = img.RasterYSize
     # size of a single tile
-    gsize = 64
+    npix = 64
+    gsize = npix*res
     # number of tiles in x and y direction (when using exhaustive sampling of unique grid cells)
     xdiv = int(round(xlen/gsize, 0))
     ydiv = int(round(ylen/gsize, 0)) 
