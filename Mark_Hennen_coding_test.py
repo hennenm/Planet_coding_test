@@ -19,7 +19,7 @@ Created on Wed Feb  2 12:00:11 2022
 # For demonstration, there is a small script after the functions. Here, you can define your 
 # working directory and run the TrainSample function and upload the results.
 # You can optionally converted the resulting training and testing arrays into .tif images  
-# using the ArrayToImage function on lines <241-243>.
+# using the ArrayToImage function on lines <241-244>.
 # ============================================================================================
 
 # Import required Python libraries
@@ -131,7 +131,8 @@ def TrainSample (image, labels):
                 
                 # Store 4 band array, label band and geotransform info in a dictionary 
                 # Dictionary structure: 
-                # Multiclass label: 4 band array (position [0]), label band (position [1]), geotransform info (position [2])
+                # Multiclass label: 4 band array (position [0]), label band (position [1]), 
+                # geotransform info (position [2]), spatial reference system-epsg (position [3])
                 gridDict[gridLab] = stack, labTile, gt, epsg 
                 
             else: # NOT all required classes occur in cell; ignore cell
