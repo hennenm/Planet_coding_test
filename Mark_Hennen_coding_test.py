@@ -225,10 +225,10 @@ def ArrayToImage (Arrdata, group):
 # ============================================================================================================
 # ----------------------- Run these lines to use train_sample function ---------------------------------------
 # Specify working directory
-os.chdir ('/Volumes/Extreme SSD/Planet/')
+os.chdir ('INSERT WORKING DIR')
 
 # Run training sample function (input mutispectral.tif, label.tif)
-TrainSample('insert_mutlispec_file.tif', 'insert_label_file.tif')
+TrainSample('INSERT MULTISPECTRAL IMAGE.tif', 'INSERT LABEL FILE.tif')
 
 # Load training and test grid cell arrays, with associated lulc label array 
 traindata = np.load('Training_data.npy', allow_pickle = 'TRUE').item()
